@@ -23,10 +23,19 @@ const { title, description } = Astro.props;
     <slot /> 
     
     <style is:global>
-      /*
-        is:global permite definir estilos que afecten a toda la 
-        web, como la fuente, el reset de CSS o colores de fondo.
-      */
+      :root {
+        --blue: #2B4E9C;
+        --grey: #737373;
+        --red: #BF2430;
+        --white: #FFF;
+      }
+
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
     </style>
 
   </body>
