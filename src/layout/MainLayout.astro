@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title} | {description}</title>
+  </head>
+  <body>
+    
+    <slot /> 
+    
+    <style is:global>
+      /*
+        is:global permite definir estilos que afecten a toda la 
+        web, como la fuente, el reset de CSS o colores de fondo.
+      */
+    </style>
+
+  </body>
+</html>
