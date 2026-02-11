@@ -4,7 +4,15 @@
 
 <nav>
   <img id="logo" src="/tl_logo.png" alt="Team logistics logo" />
-  <ul>
+
+  <!-- Botón hamburguesa -->
+  <button id="menu-toggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul id="menu">
     <li>
       <a href="#home">Inicio</a>
     </li>
@@ -28,7 +36,6 @@
     justify-content: space-between;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
-    flex-direction: row;
     align-items: center;
     position: fixed;
     padding: 1% 16%;
@@ -39,15 +46,14 @@
   }
 
   nav ul {
-    align-items: right;
+    align-items: center;
     list-style: none;
     display: flex;
-    gap: 35px;
+    gap: 12px;
   }
 
   nav li {
     transition: transform 0.3s ease;
-    align-content: center;
     display: inline;
   }
 
@@ -83,4 +89,132 @@
     cursor: pointer;
     opacity: 0.96;
   }
+
+  /* Botón hamburguesa oculto por defecto */
+  #menu-toggle {
+    background: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    cursor: pointer;
+    display: none;
+    height: 24px;
+    width: 30px;
+    padding: 0;
+  }
+
+  #menu-toggle span {
+    transition: all 0.3s ease;
+    background-color: var(--grey);
+    border-radius: 2px;
+    display: block;
+    height: 3px;
+    width: 100%;
+  }
+
+  /* Animación del botón hamburguesa cuando está activo */
+  #menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  #menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    nav {
+      padding: 3% 5%;
+    }
+
+    #logo {
+      height: 60px;
+    }
+
+    #menu-toggle {
+      display: flex;
+      z-index: 1001;
+    }
+
+    nav ul {
+      background-color: rgba(255, 255, 255, 0.98);
+      flex-direction: column;
+      position: fixed;
+      padding: 80px 0 40px;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      top: 0;
+      gap: 30px;
+      transition: right 0.4s ease;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.active {
+      right: 0;
+    }
+
+    nav li {
+      width: 100%;
+      text-align: center;
+    }
+
+    nav a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 16px;
+    }
+
+    #btn-quote {
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    nav {
+      padding: 4% 4%;
+    }
+
+    #logo {
+      height: 50px;
+    }
+
+    nav ul {
+      width: 80%;
+    }
+  }
 </style>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  menuToggle?.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    menu?.classList.toggle("active");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  const menuLinks = menu?.querySelectorAll("a");
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle?.classList.remove("active");
+      menu?.classList.remove("active");
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera de él
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest("nav")) {
+      menuToggle?.classList.remove("active");
+      menu?.classList.remove("active");
+    }
+  });
+</script>
