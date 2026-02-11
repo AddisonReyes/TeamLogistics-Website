@@ -1,9 +1,25 @@
 ---
-import MainLayout from '../layout/MainLayout.astro';
-import Navbar from '../components/common/Navbar.astro';
-import Footer from '../components/common/Footer.astro';
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+import MainLayout from "../layout/MainLayout.astro";
+import Services from "../components/Services.astro";
+import Features from "../components/Features.astro";
+import Hero from "../components/Hero.astro";
+import Data from "../components/Data.astro";
 ---
 
-<MainLayout title="Team Logistics" description="Conectando negocios con eficiencia y ahorro.">
-  <Navbar/>
+<MainLayout
+  title="Team Logistics"
+  description="Conectando negocios con eficiencia y ahorro."
+>
+  <main>
+    <Navbar />
+    <Hero />
+    <Services />
+    <Features />
+    <Data />
+    <QuoteForm />
+    <Footer />
+  </main>
 </MainLayout>

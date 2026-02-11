@@ -1,0 +1,472 @@
+---
+const cargoTypes = [
+  "Carga General",
+  "Perecederos",
+  "Electrónicos",
+  "Maquinaria",
+  "Otros",
+];
+---
+
+<section id="contacto" class="quote-section">
+  <div class="container">
+    <div class="quote-card">
+      <!-- Left Column - Info -->
+      <div class="info-column">
+        <div class="info-content">
+          <div>
+            <h3 class="info-title">Solicite su Cotización Hoy Mismo</h3>
+            <p class="info-description">
+              Nuestro equipo de expertos le responderá en menos de 24 horas con
+              la mejor solución logística para su negocio.
+            </p>
+
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-label">Ubicación</div>
+                  <div class="contact-value">
+                    Santo Domingo, República Dominicana
+                  </div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M16.5 9.4 7.55 4.24"></path>
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                    ></path>
+                    <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                    <line x1="12" x2="12" y1="22" y2="12"></line>
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-label">Capacidad LCL</div>
+                  <div class="contact-value">
+                    Desde 1m³ hasta carga completa
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="testimonial-quote">
+              "Team Logistics transformó nuestra cadena de suministro,
+              reduciendo costos en un 35%."
+            </div>
+            <div class="testimonial-author">Juan Pérez</div>
+            <div class="testimonial-role">Gerente de Importaciones, TechDR</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="form-column">
+        <form class="quote-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nombre Completo</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ej. Carlos Rodríguez"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-input"
+                placeholder="carlos@empresa.com"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Origen</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ciudad, País"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Destino</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Ciudad, País"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tipo de Carga</label>
+              <select class="form-input">
+                {cargoTypes.map((type) => <option>{type}</option>)}
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Volumen Estimado (m³)</label>
+              <div class="input-with-icon">
+                <input
+                  type="number"
+                  class="form-input"
+                  placeholder="0.00"
+                  step="0.01"
+                />
+                <svg
+                  class="input-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+                  ></path>
+                  <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+                  ></path>
+                  <path d="M7 21h10"></path>
+                  <path d="M12 3v18"></path>
+                  <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mensaje Adicional</label>
+            <textarea
+              rows="4"
+              class="form-input"
+              placeholder="Cuéntenos más sobre su envío..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">
+            Enviar Solicitud
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote-section {
+    padding: 6rem 0;
+    background-color: #ffffff;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+
+  .quote-card {
+    background-color: var(--brand-blue, #1e40af);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 1024px) {
+    .quote-card {
+      flex-direction: row;
+    }
+  }
+
+  /* Info Column */
+  .info-column {
+    width: 100%;
+    padding: 3rem;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1024px) {
+    .info-column {
+      width: 40%;
+      padding: 4rem;
+    }
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .info-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .info-description {
+    color: #dbeafe;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .contact-label {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-value {
+    color: #dbeafe;
+    font-size: 0.875rem;
+  }
+
+  .testimonial {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    color: #dbeafe;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .testimonial-role {
+    font-size: 0.75rem;
+    color: #bfdbfe;
+  }
+
+  /* Form Column */
+  .form-column {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .form-column {
+      width: 60%;
+      padding: 4rem;
+    }
+  }
+
+  .quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--brand-gray, #6b7280);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .form-input:focus {
+    ring: 2px;
+    ring-color: var(--brand-blue, #1e40af);
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--brand-blue, #1e40af);
+  }
+
+  .form-input::placeholder {
+    color: #9ca3af;
+  }
+
+  textarea.form-input {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  select.form-input {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  .input-with-icon {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #9ca3af;
+    pointer-events: none;
+  }
+
+  .submit-button {
+    width: 100%;
+    background-color: var(--brand-red, #dc2626);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0);
+  }
+
+  .submit-button:hover {
+    background-color: rgba(220, 38, 38, 0.9);
+    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.2);
+  }
+
+  .submit-button:active {
+    transform: scale(0.98);
+  }
+
+  .submit-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>
