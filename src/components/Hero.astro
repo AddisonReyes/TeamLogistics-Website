@@ -1,5 +1,5 @@
 ---
-const sectors = ["Retail", "Industria", "E-commerce", "Distribución"];
+const sectors = ["Retail", "Industria", "Distribución"];
 
 const operations = [
   {
@@ -33,7 +33,9 @@ const operations = [
       <div class="eyebrow">República Dominicana · Freight Forwarding</div>
 
       <h1 class="hero-title">
-        Logística internacional con <span class="highlight">criterio operativo</span>
+        Logística internacional con <span class="highlight"
+          >criterio operativo</span
+        >
       </h1>
 
       <p class="hero-description">
@@ -68,22 +70,30 @@ const operations = [
       <div class="stats">
         <div class="stat-item">
           <div class="stat-number">15+</div>
-          <div class="stat-label">Años acompañando importadores y distribuidores</div>
+          <div class="stat-label">
+            Años acompañando importadores y distribuidores
+          </div>
         </div>
         <div class="stat-item">
           <div class="stat-number">24 h</div>
-          <div class="stat-label">para estructurar cotizaciones con alcance claro</div>
+          <div class="stat-label">
+            para estructurar cotizaciones con alcance claro
+          </div>
         </div>
         <div class="stat-item">
           <div class="stat-number">1 equipo</div>
-          <div class="stat-label">local para coordinar origen, tránsito y entrega</div>
+          <div class="stat-label">
+            local para coordinar origen, tránsito y entrega
+          </div>
         </div>
       </div>
     </div>
 
     <aside class="hero-panel">
       <div class="panel-tag">Visión operativa</div>
-      <h2 class="panel-title">Un solo frente para coordinar su cadena logística</h2>
+      <h2 class="panel-title">
+        Un solo frente para coordinar su cadena logística
+      </h2>
       <p class="panel-description">
         Menos improvisación, más estructura comercial y seguimiento en cada
         etapa del embarque.
@@ -102,7 +112,9 @@ const operations = [
 
       <div class="panel-footer">
         <span class="panel-footer-label">Enfoque</span>
-        <span class="panel-footer-value">Consolidación, control documental y ejecución confiable</span>
+        <span class="panel-footer-value"
+          >Consolidación, control documental y ejecución confiable</span
+        >
       </div>
     </aside>
   </div>
@@ -140,8 +152,7 @@ const operations = [
         rgba(17, 33, 61, 0.45) 68%,
         rgba(17, 33, 61, 0.2) 100%
       ),
-      linear-gradient(180deg, rgba(13, 21, 39, 0.12), rgba(13, 21, 39, 0.7))
-      ;
+      linear-gradient(180deg, rgba(13, 21, 39, 0.12), rgba(13, 21, 39, 0.7));
   }
 
   .hero-grid {
@@ -322,8 +333,11 @@ const operations = [
     padding: 1.55rem;
     border-radius: 1.6rem;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0.07)
+    );
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     color: var(--brand-white);
@@ -418,9 +432,39 @@ const operations = [
     }
   }
 
+  @media (min-width: 901px) and (max-width: 1023px) {
+    .hero-panel {
+      width: 100%;
+      justify-self: stretch;
+      padding: 1.7rem;
+    }
+
+    .panel-title {
+      max-width: 34rem;
+    }
+
+    .panel-description {
+      max-width: 42rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .panel-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .panel-footer {
+      margin-top: 1.15rem;
+    }
+
+    .panel-item:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
   @media (max-width: 900px) {
     .hero-container {
-      padding-top: 8.5rem;
+      padding-top: 10rem;
     }
 
     .stats {
@@ -428,6 +472,8 @@ const operations = [
     }
 
     .hero-panel {
+      width: 100%;
+      max-width: none;
       justify-self: stretch;
     }
   }
@@ -435,7 +481,7 @@ const operations = [
   @media (max-width: 560px) {
     .hero-container {
       min-height: auto;
-      padding-top: 7rem;
+      padding-top: 9rem;
       padding-bottom: 2.4rem;
     }
 

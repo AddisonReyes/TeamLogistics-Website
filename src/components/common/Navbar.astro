@@ -43,6 +43,9 @@
     inset: 0 0 auto;
     z-index: 1000;
     padding: 1.1rem 1rem 0;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
 
   .nav-shell {
@@ -178,31 +181,45 @@
   }
 
   @media (max-width: 768px) {
+    .site-header.is-hidden {
+      transform: translateY(calc(-100% - 1rem));
+      opacity: 0;
+    }
+
     .site-header {
-      padding: 0.65rem 0.65rem 0;
+      padding: 0.7rem 0.7rem 2rem;
     }
 
     .nav-shell {
       gap: 0.9rem;
-      padding: 0.75rem 0.85rem;
-      border-radius: 1.1rem;
+      min-height: 6.4rem;
+      padding: 0.9rem 1rem;
+      border-radius: 1.3rem;
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
     }
 
     #menu-toggle {
       display: flex;
       z-index: 1001;
+      width: 3.2rem;
+      height: 3.2rem;
+      padding: 0.8rem 0.7rem;
+      align-items: center;
+      border-radius: 1rem;
+      background: rgba(17, 33, 61, 0.04);
+      border: 1px solid rgba(17, 33, 61, 0.1);
     }
 
     #logo {
-      width: 86px;
-      height: 54px;
+      width: 92px;
+      height: 58px;
     }
 
     nav ul {
       flex-direction: column;
       align-items: stretch;
       position: absolute;
-      top: calc(100% + 0.75rem);
+      top: calc(100% + 0.95rem);
       left: 0;
       right: 0;
       padding: 1rem;
@@ -261,17 +278,30 @@
   }
 
   @media (max-width: 480px) {
+    .site-header {
+      padding: 0.6rem 0.6rem 2rem;
+    }
+
     .nav-shell {
-      padding: 0.72rem 0.8rem;
+      min-height: 5.9rem;
+      padding: 0.82rem 0.85rem;
+      border-radius: 1.15rem;
     }
 
     #logo {
-      width: 78px;
-      height: 48px;
+      width: 84px;
+      height: 52px;
+    }
+
+    #menu-toggle {
+      width: 3rem;
+      height: 3rem;
+      padding: 0.72rem 0.64rem;
+      border-radius: 0.95rem;
     }
 
     nav ul {
-      top: calc(100% + 0.55rem);
+      top: calc(100% + 0.8rem);
       padding: 0.8rem;
     }
 
@@ -283,14 +313,52 @@
 </style>
 
 <script>
+  const siteHeader = document.querySelector(".site-header");
   const menuToggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
   const menuBackdrop = document.getElementById("menu-backdrop");
+  const mobileNavbarQuery = window.matchMedia("(max-width: 768px)");
+  let lastScrollY = window.scrollY;
+  let isTicking = false;
+
+  const syncNavbarVisibility = () => {
+    if (!siteHeader) {
+      isTicking = false;
+      return;
+    }
+
+    const currentScrollY = window.scrollY;
+    const isMenuOpen = menu?.classList.contains("active");
+
+    if (!mobileNavbarQuery.matches || isMenuOpen) {
+      siteHeader.classList.remove("is-hidden");
+      lastScrollY = currentScrollY;
+      isTicking = false;
+      return;
+    }
+
+    const scrollingDown = currentScrollY > lastScrollY;
+    const passedHideThreshold = currentScrollY > 120;
+
+    if (scrollingDown && passedHideThreshold) {
+      siteHeader.classList.add("is-hidden");
+    } else {
+      siteHeader.classList.remove("is-hidden");
+    }
+
+    if (currentScrollY <= 12) {
+      siteHeader.classList.remove("is-hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    isTicking = false;
+  };
 
   menuToggle?.addEventListener("click", () => {
     menuToggle.classList.toggle("active");
     menu?.classList.toggle("active");
     menuBackdrop?.classList.toggle("active");
+    siteHeader?.classList.remove("is-hidden");
     menuToggle.setAttribute(
       "aria-expanded",
       menuToggle.classList.contains("active") ? "true" : "false",
@@ -303,6 +371,7 @@
       menuToggle?.classList.remove("active");
       menu?.classList.remove("active");
       menuBackdrop?.classList.remove("active");
+      siteHeader?.classList.remove("is-hidden");
       menuToggle?.setAttribute("aria-expanded", "false");
     });
   });
@@ -313,7 +382,26 @@
       menuToggle?.classList.remove("active");
       menu?.classList.remove("active");
       menuBackdrop?.classList.remove("active");
+      siteHeader?.classList.remove("is-hidden");
       menuToggle?.setAttribute("aria-expanded", "false");
     }
   });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(syncNavbarVisibility);
+        isTicking = true;
+      }
+    },
+    { passive: true },
+  );
+
+  mobileNavbarQuery.addEventListener("change", () => {
+    siteHeader?.classList.remove("is-hidden");
+    lastScrollY = window.scrollY;
+  });
+
+  syncNavbarVisibility();
 </script>

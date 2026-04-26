@@ -38,7 +38,7 @@ const socialLinks = [
   <div class="container">
     <div class="footer-grid">
       <div class="footer-column">
-        <span class="logo-text">Team Logistics</span>
+        <span class="logo-text">Team Logistics ALZ, SRL</span>
         <p class="company-description">
           Coordinamos carga con una mirada más profesional del proceso:
           consolidación, documentación, tránsito y entrega con soporte local.
@@ -138,9 +138,18 @@ const socialLinks = [
     </div>
 
     <div class="footer-bottom">
-      <p class="copyright">
-        © 2026 Team Logistics. Todos los derechos reservados.
-      </p>
+      <div class="footer-meta">
+        <p class="copyright">
+          © 2026 Team Logistics. Todos los derechos reservados.
+        </p>
+        <p class="credit">
+          Hecho por <a
+            href="https://addisonreyes.com"
+            target="_blank"
+            rel="noreferrer">Addison Reyes</a
+          >
+        </p>
+      </div>
       <div class="legal-links">
         <a href="#" class="legal-link">Política de Privacidad</a>
         <a href="#" class="legal-link">Términos de Servicio</a>
@@ -330,6 +339,32 @@ const socialLinks = [
     font-size: 0.75rem;
     color: #8e99ae;
     margin: 0;
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .credit {
+    margin: 0;
+    font-size: 0.72rem;
+    color: #748198;
+  }
+
+  .credit a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240, 219, 191, 0.25);
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .credit a:hover {
+    color: #f0dbbf;
+    border-color: rgba(240, 219, 191, 0.75);
   }
 
   .legal-links {
