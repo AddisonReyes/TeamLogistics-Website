@@ -1,76 +1,74 @@
 ---
-// Puedes pasar la imagen como prop si lo necesitas
 const imageUrl =
   "https://images.unsplash.com/photo-1619070284836-e850273d69ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsb2dpc3RpY3MlMjB3YXJlaG91c2UlMjBzdG9yYWdlfGVufDF8fHx8MTc3MDMzODI0Mnww&ixlib=rb-4.1.0&q=80&w=1080";
 
 const features = [
-  "Consolidación semanal garantizada desde los principales puertos.",
-  "Red de transporte propia en toda la región del Caribe.",
-  "Seguimiento en tiempo real de su mercancía.",
-  "Especialistas en normativa aduanal dominicana.",
-  "Costos transparentes sin cargos ocultos.",
+  {
+    title: "Planeación antes de embarcar",
+    description:
+      "Definimos alcance, ruta y documentación antes de mover la carga para reducir ajustes de última hora.",
+  },
+  {
+    title: "Visibilidad durante el tránsito",
+    description:
+      "Centralizamos actualizaciones y seguimiento para que su equipo tenga claridad comercial y operativa.",
+  },
+  {
+    title: "Soporte local con criterio",
+    description:
+      "Acompañamos decisiones en origen, tránsito y destino con enfoque práctico para importadores y distribuidores.",
+  },
+  {
+    title: "Costos mejor estructurados",
+    description:
+      "La consolidación permite alinear volumen y presupuesto sin sobredimensionar la operación.",
+  },
 ];
 ---
 
 <section id="about" class="features-section">
   <div class="container">
     <div class="content-wrapper">
-      <!-- Image Column -->
       <div class="image-column">
         <div class="image-wrapper">
           <img
             src={imageUrl}
-            alt="Logistics Efficiency"
+            alt="Centro logístico y operación de almacenaje"
             class="main-image"
             loading="lazy"
           />
         </div>
-        <div class="bg-decoration bg-blue"></div>
-        <div class="bg-decoration bg-red"></div>
 
         <div class="stats-badge">
-          <div class="stats-number">100%</div>
-          <div class="stats-label">CONFIDENCIALIDAD</div>
+          <div class="stats-number">LCL</div>
+          <div class="stats-label">Consolidación con lectura comercial y operativa</div>
         </div>
       </div>
 
-      <!-- Content Column -->
       <div class="text-column">
-        <h2 class="subtitle">Por Qué Elegirnos</h2>
-        <h3 class="title">Pague Solo por el Espacio que Utiliza</h3>
+        <h2 class="subtitle">Por qué Team Logistics</h2>
+        <h3 class="title">Menos improvisación, más estructura en cada movimiento</h3>
         <p class="description">
-          En Team Logistics entendemos que no todos los negocios necesitan
-          enviar un contenedor completo. Por eso nos especializamos en la
-          consolidación de carga, permitiéndole optimizar sus costos operativos
-          de manera significativa.
+          La diferencia no está solo en mover carga. Está en ordenar la
+          operación para que su empresa tome decisiones con mejor información,
+          mejores tiempos de respuesta y menos fricción documental.
         </p>
 
-        <ul class="features-list">
+        <div class="features-list">
           {
             features.map((item) => (
-              <li class="feature-item">
-                <svg
-                  class="check-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <span class="feature-text">{item}</span>
-              </li>
+              <article class="feature-item">
+                <span class="feature-marker"></span>
+                <div>
+                  <h4 class="feature-heading">{item.title}</h4>
+                  <p class="feature-text">{item.description}</p>
+                </div>
+              </article>
             ))
           }
-        </ul>
+        </div>
 
-        <button class="cta-button"> Conocer Más Sobre Nosotros </button>
+        <a href="#contact" class="cta-button">Hablar con un asesor logístico</a>
       </div>
     </div>
   </div>
@@ -78,8 +76,10 @@ const features = [
 
 <style>
   .features-section {
-    padding: 6rem 0;
-    background-color: #f9fafb;
+    padding: 6.5rem 0;
+    background:
+      radial-gradient(circle at left top, rgba(195, 71, 63, 0.08), transparent 24%),
+      linear-gradient(180deg, #fbfcfe 0%, #f2f5fa 100%);
     overflow: hidden;
   }
 
@@ -102,36 +102,23 @@ const features = [
   }
 
   .content-wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 3rem;
     align-items: center;
-    gap: 4rem;
   }
 
-  @media (min-width: 1024px) {
-    .content-wrapper {
-      flex-direction: row;
-    }
-  }
-
-  /* Image Column */
   .image-column {
     width: 100%;
     position: relative;
-  }
-
-  @media (min-width: 1024px) {
-    .image-column {
-      width: 50%;
-    }
+    order: 2;
   }
 
   .image-wrapper {
     position: relative;
     z-index: 10;
-    border-radius: 1rem;
+    border-radius: 1.6rem;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-strong);
   }
 
   .main-image {
@@ -141,151 +128,193 @@ const features = [
     display: block;
   }
 
-  .bg-decoration {
-    position: absolute;
-    width: 16rem;
-    height: 16rem;
-    border-radius: 1rem;
-    z-index: 0;
-    opacity: 0.1;
-  }
-
-  .bg-decoration.bg-blue {
-    bottom: -2rem;
-    right: -2rem;
-    background-color: var(--brand-blue, #1e40af);
-  }
-
-  .bg-decoration.bg-red {
-    top: -2rem;
-    left: -2rem;
-    background-color: var(--brand-red, #dc2626);
-  }
-
   .stats-badge {
-    display: none;
     position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow:
-      0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    right: 1.25rem;
+    bottom: 1.25rem;
+    max-width: 16rem;
+    background: rgba(255, 253, 249, 0.94);
+    padding: 1.15rem 1.2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: var(--shadow-soft);
     z-index: 20;
   }
 
-  @media (min-width: 640px) {
-    .stats-badge {
-      display: block;
-    }
-  }
-
   .stats-number {
-    font-size: 1.875rem;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--brand-blue, #1e40af);
+    color: var(--brand-blue);
+    letter-spacing: 0.08em;
     line-height: 1;
   }
 
   .stats-label {
     font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--brand-gray, #6b7280);
-    letter-spacing: 0.05em;
-    margin-top: 0.25rem;
+    color: var(--brand-muted);
+    line-height: 1.6;
+    margin-top: 0.45rem;
   }
 
-  /* Text Column */
   .text-column {
     width: 100%;
+    order: 1;
   }
 
   @media (min-width: 1024px) {
+    .content-wrapper {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 4rem;
+    }
+
+    .image-column {
+      order: 1;
+    }
+
     .text-column {
-      width: 50%;
+      order: 2;
     }
   }
 
   .subtitle {
-    color: var(--brand-red, #dc2626);
-    font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
+    color: var(--brand-red);
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
 
   .title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: var(--brand-blue, #1e40af);
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    .title {
-      font-size: 2.25rem;
-    }
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.06;
+    color: var(--brand-ink);
+    margin-bottom: 1.4rem;
   }
 
   .description {
-    font-size: 1.125rem;
-    color: var(--brand-gray, #6b7280);
+    font-size: 1rem;
+    color: var(--brand-muted);
     margin-bottom: 2rem;
-    line-height: 1.625;
+    line-height: 1.85;
+    max-width: 38rem;
   }
 
   .features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2.5rem 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
+    margin-bottom: 2.2rem;
   }
 
   .feature-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.95rem;
+    padding: 1.15rem;
+    border-radius: 1.2rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
   }
 
-  .check-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--brand-red, #dc2626);
+  .feature-marker {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--brand-red), #e5b4a7);
     flex-shrink: 0;
-    margin-top: 0.125rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 0 8px rgba(195, 71, 63, 0.08);
+  }
+
+  .feature-heading {
+    font-size: 1rem;
+    color: var(--brand-ink);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.02em;
   }
 
   .feature-text {
-    color: var(--brand-gray, #6b7280);
-    font-weight: 500;
-    line-height: 1.5;
+    color: var(--brand-muted);
+    line-height: 1.7;
   }
 
   .cta-button {
-    background-color: var(--brand-blue, #1e40af);
-    color: #ffffff;
-    padding: 1rem 2.5rem;
-    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-navy));
+    color: var(--brand-white);
+    padding: 1rem 1.4rem;
+    border-radius: 999px;
     font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.2);
-    font-size: 1rem;
+    text-decoration: none;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+    box-shadow: 0 18px 34px rgba(17, 33, 61, 0.18);
+    font-size: 0.95rem;
   }
 
   .cta-button:hover {
-    background-color: rgba(30, 64, 175, 0.9);
     transform: translateY(-2px);
-    box-shadow: 0 15px 20px -5px rgba(30, 64, 175, 0.3);
+    box-shadow: 0 24px 44px rgba(17, 33, 61, 0.22);
   }
 
-  .cta-button:active {
-    transform: translateY(0);
+  @media (max-width: 560px) {
+    .features-section {
+      padding: 5rem 0;
+    }
+
+    .content-wrapper {
+      gap: 2rem;
+    }
+
+    .image-wrapper {
+      border-radius: 1.15rem;
+    }
+
+    .stats-badge {
+      position: static;
+      max-width: none;
+      margin-top: 0.9rem;
+      padding: 1rem;
+    }
+
+    .title {
+      font-size: 1.9rem;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    .feature-heading {
+      font-size: 0.95rem;
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      width: 100%;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.92rem;
+    }
   }
 </style>

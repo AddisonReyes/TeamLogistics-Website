@@ -1,40 +1,49 @@
 ---
-// Hero.astro
+const sectors = ["Retail", "Industria", "E-commerce", "Distribución"];
+
+const operations = [
+  {
+    label: "Cobertura clave",
+    value: "Caribe, América y Europa",
+  },
+  {
+    label: "Tiempo de respuesta",
+    value: "Cotizaciones en menos de 24 h",
+  },
+  {
+    label: "Operativas",
+    value: "LCL, FCL, aérea y terrestre",
+  },
+];
 ---
 
 <section id="home" class="hero-container">
   <div class="hero-background">
     <img
       src="https://images.unsplash.com/photo-1663801563712-ebf3c6a78239?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJnbyUyMHNoaXAlMjBvY2VhbnxlbnwxfHx8fDE3NzAyNjk3OTN8MA&ixlib=rb-4.1.0&q=80&w=1920"
-      alt="Cargo Ship Logistics"
+      alt="Operación marítima internacional"
       class="hero-image"
     />
     <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
   </div>
 
   <div class="hero-content">
     <div class="hero-text">
-      <div class="badge">
-        <span class="badge-dot">
-          <span class="ping"></span>
-          <span class="dot"></span>
-        </span>
-        LOGÍSTICA SIN LÍMITES
-      </div>
+      <div class="eyebrow">República Dominicana · Freight Forwarding</div>
 
       <h1 class="hero-title">
-        Conectamos su negocio con el <span class="highlight">Mundo</span>
+        Logística internacional con <span class="highlight">criterio operativo</span>
       </h1>
 
       <p class="hero-description">
-        Especialistas en logística integral y consolidación de carga a nivel
-        global. Pague solo por el espacio que usa, desde y hacia cualquier
-        continente.
+        Diseñamos embarques claros, trazables y rentables para empresas que
+        necesitan mover carga con orden, visibilidad y respuesta local.
       </p>
 
       <div class="hero-buttons">
         <a href="#contact" class="btn-primary">
-          Ver Tarifas de Envío
+          Solicitar cotización
           <svg
             class="chevron"
             width="20"
@@ -49,40 +58,63 @@
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </a>
-        <a href="#services" class="btn-secondary"> Nuestros Servicios </a>
+        <a href="#services" class="btn-secondary">Ver soluciones</a>
+      </div>
+
+      <div class="hero-sectors">
+        {sectors.map((sector) => <span>{sector}</span>)}
       </div>
 
       <div class="stats">
         <div class="stat-item">
           <div class="stat-number">15+</div>
-          <div class="stat-label">Años Experiencia</div>
+          <div class="stat-label">Años acompañando importadores y distribuidores</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">200+</div>
-          <div class="stat-label">Puertos Globales</div>
+          <div class="stat-number">24 h</div>
+          <div class="stat-label">para estructurar cotizaciones con alcance claro</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Monitoreo Real</div>
+          <div class="stat-number">1 equipo</div>
+          <div class="stat-label">local para coordinar origen, tránsito y entrega</div>
         </div>
       </div>
     </div>
+
+    <aside class="hero-panel">
+      <div class="panel-tag">Visión operativa</div>
+      <h2 class="panel-title">Un solo frente para coordinar su cadena logística</h2>
+      <p class="panel-description">
+        Menos improvisación, más estructura comercial y seguimiento en cada
+        etapa del embarque.
+      </p>
+
+      <div class="panel-list">
+        {
+          operations.map((item) => (
+            <div class="panel-item">
+              <span class="panel-label">{item.label}</span>
+              <strong class="panel-value">{item.value}</strong>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="panel-footer">
+        <span class="panel-footer-label">Enfoque</span>
+        <span class="panel-footer-value">Consolidación, control documental y ejecución confiable</span>
+      </div>
+    </aside>
   </div>
 </section>
 
 <style>
-  section {
-    padding-bottom: 80px;
-    padding-top: 160px;
-    height: 100%;
-  }
-
   .hero-container {
     position: relative;
-    min-height: 700px;
+    min-height: 100svh;
     display: flex;
-    align-items: center;
     overflow: hidden;
+    padding: 9.5rem 0 4.5rem;
   }
 
   .hero-background {
@@ -100,26 +132,48 @@
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to right,
-      rgba(0, 51, 102, 0.9),
-      rgba(0, 51, 102, 0.6),
-      transparent
+    background:
+      linear-gradient(
+        100deg,
+        rgba(14, 26, 48, 0.96) 0%,
+        rgba(17, 33, 61, 0.88) 42%,
+        rgba(17, 33, 61, 0.45) 68%,
+        rgba(17, 33, 61, 0.2) 100%
+      ),
+      linear-gradient(180deg, rgba(13, 21, 39, 0.12), rgba(13, 21, 39, 0.7))
+      ;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 58px 58px;
+    opacity: 0.2;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent 85%);
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.9),
+      transparent 85%
     );
   }
 
   .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 1280px;
+    width: min(1280px, 100%);
     margin: 0 auto;
     padding: 0 1rem;
-    width: 100%;
+    display: grid;
+    gap: 2.5rem;
+    align-items: end;
   }
 
   .hero-text {
-    max-width: 42rem;
-    color: white;
+    max-width: 43rem;
+    color: var(--brand-white);
     animation: fadeInLeft 0.8s ease-out;
   }
 
@@ -134,98 +188,64 @@
     }
   }
 
-  .badge {
+  .eyebrow {
     display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.75rem;
-    background-color: #dc2626;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
-  }
-
-  .badge-dot {
-    position: relative;
-    display: flex;
-    height: 0.5rem;
-    width: 0.5rem;
-  }
-
-  .ping {
-    position: absolute;
-    display: inline-flex;
-    height: 100%;
-    width: 100%;
-    border-radius: 9999px;
-    background-color: white;
-    opacity: 0.75;
-    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  @keyframes ping {
-    75%,
-    100% {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-
-  .dot {
-    position: relative;
-    display: inline-flex;
-    border-radius: 9999px;
-    height: 0.5rem;
-    width: 0.5rem;
-    background-color: white;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 1.3rem;
   }
 
   .hero-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.06em;
+    margin-bottom: 1.35rem;
   }
 
   .highlight {
-    color: #dc2626;
+    color: #f0dbbf;
   }
 
   .hero-description {
-    font-size: 1.25rem;
-    color: #f3f4f6;
+    max-width: 38rem;
+    font-size: 1.08rem;
+    color: rgba(255, 255, 255, 0.78);
     margin-bottom: 2rem;
-    font-weight: 300;
   }
 
   .hero-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.9rem;
   }
 
   .btn-primary {
-    background-color: #dc2626;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
+    background: linear-gradient(135deg, var(--brand-red), #9e352f);
+    color: var(--brand-white);
+    padding: 1rem 1.45rem;
+    border-radius: 999px;
+    font-size: 0.98rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+    box-shadow: 0 22px 44px rgba(159, 57, 49, 0.26);
   }
 
   .btn-primary:hover {
-    background-color: rgba(220, 38, 38, 0.9);
-    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.2);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    box-shadow: 0 28px 50px rgba(159, 57, 49, 0.34);
   }
 
   .chevron {
@@ -234,14 +254,13 @@
   }
 
   .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.125rem;
-    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    color: var(--brand-white);
+    padding: 1rem 1.4rem;
+    border-radius: 999px;
+    font-size: 0.98rem;
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -250,56 +269,259 @@
   }
 
   .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .hero-sectors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 2rem 0;
+  }
+
+  .hero-sectors span {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.65rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .stats {
-    margin-top: 3rem;
+    margin-top: 1.2rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 1rem;
+    padding-top: 1.35rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
   }
 
   .stat-item {
     text-align: left;
+    padding-right: 0.4rem;
   }
 
   .stat-number {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.4rem;
   }
 
   .stat-label {
-    font-size: 0.875rem;
-    color: #d1d5db;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .hero-panel {
+    justify-self: end;
+    width: min(100%, 25rem);
+    padding: 1.55rem;
+    border-radius: 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    color: var(--brand-white);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .panel-tag {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(240, 219, 191, 0.15);
+    color: #f0dbbf;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.88rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .panel-title {
+    font-size: 1.55rem;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.85rem;
+  }
+
+  .panel-description {
+    font-size: 0.96rem;
+    color: rgba(255, 255, 255, 0.74);
+    margin-bottom: 1.4rem;
+  }
+
+  .panel-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .panel-item {
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .panel-label {
+    display: block;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.56);
+    margin-bottom: 0.3rem;
+  }
+
+  .panel-value {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  .panel-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .panel-footer-label {
+    display: block;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.56);
+    margin-bottom: 0.35rem;
+  }
+
+  .panel-footer-value {
+    display: block;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.95rem;
   }
 
   @media (min-width: 640px) {
     .hero-content {
       padding: 0 1.5rem;
     }
-
-    .hero-buttons {
-      flex-direction: row;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .hero-title {
-      font-size: 3.75rem;
-    }
-
-    .hero-description {
-      font-size: 1.5rem;
-    }
   }
 
   @media (min-width: 1024px) {
     .hero-content {
       padding: 0 2rem;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.7fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-container {
+      padding-top: 8.5rem;
+    }
+
+    .stats {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-panel {
+      justify-self: stretch;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-container {
+      min-height: auto;
+      padding-top: 7rem;
+      padding-bottom: 2.4rem;
+    }
+
+    .hero-content {
+      gap: 1.6rem;
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 0.96rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      padding: 0.95rem 1.1rem;
+      font-size: 0.94rem;
+    }
+
+    .hero-sectors {
+      gap: 0.55rem;
+      margin: 1.4rem 0;
+    }
+
+    .hero-sectors span {
+      font-size: 0.72rem;
+      padding: 0.56rem 0.7rem;
+    }
+
+    .stats {
+      gap: 0.9rem;
+      padding-top: 1rem;
+    }
+
+    .stat-number {
+      font-size: 1.35rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+    }
+
+    .hero-panel {
+      padding: 1.15rem;
+      border-radius: 1.2rem;
+    }
+
+    .panel-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+    }
+
+    .panel-title {
+      font-size: 1.3rem;
+    }
+
+    .panel-description,
+    .panel-footer-value {
+      font-size: 0.9rem;
+    }
+
+    .panel-item {
+      padding: 0.85rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .hero-title {
+      font-size: 2rem;
     }
   }
 </style>

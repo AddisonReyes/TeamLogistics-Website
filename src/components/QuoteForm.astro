@@ -11,14 +11,16 @@ const cargoTypes = [
 <section id="contact" class="quote-section">
   <div class="container">
     <div class="quote-card">
-      <!-- Left Column - Info -->
       <div class="info-column">
         <div class="info-content">
           <div>
-            <h3 class="info-title">Solicite su Cotización Hoy Mismo</h3>
+            <span class="info-kicker">Cotización profesional</span>
+            <h3 class="info-title">
+              Cuéntenos su operación y armamos el mejor siguiente paso
+            </h3>
             <p class="info-description">
-              Nuestro equipo de expertos le responderá en menos de 24 horas con
-              la mejor solución logística para su negocio.
+              Evaluamos origen, destino, modalidad, volumen y necesidades
+              documentales para responder con una propuesta más clara y útil.
             </p>
 
             <div class="contact-items">
@@ -41,7 +43,7 @@ const cargoTypes = [
                   </svg>
                 </div>
                 <div>
-                  <div class="contact-label">Ubicación</div>
+                  <div class="contact-label">Base de operación</div>
                   <div class="contact-value">
                     Santo Domingo, República Dominicana
                   </div>
@@ -69,28 +71,23 @@ const cargoTypes = [
                   </svg>
                 </div>
                 <div>
-                  <div class="contact-label">Capacidad LCL</div>
+                  <div class="contact-label">Tipo de atención</div>
                   <div class="contact-value">
-                    Desde 1m³ hasta carga completa
+                    Respuesta comercial en menos de 24 horas
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="testimonial">
-            <div class="testimonial-quote">
-              "Team Logistics transformó nuestra cadena de suministro,
-              reduciendo costos en un 35%."
-            </div>
-            <div class="testimonial-author">Juan Pérez</div>
-            <div class="testimonial-role">Gerente de Importaciones, TechDR</div>
-          </div>
         </div>
       </div>
 
-      <!-- Right Column - Form -->
       <div class="form-column">
+        <div class="form-header">
+          <span class="form-kicker">Formulario</span>
+          <h4 class="form-title">Comparta los datos básicos de su embarque</h4>
+        </div>
+
         <form class="quote-form">
           <div class="form-row">
             <div class="form-group">
@@ -203,8 +200,14 @@ const cargoTypes = [
 
 <style>
   .quote-section {
-    padding: 6rem 0;
-    background-color: #ffffff;
+    padding: 6.5rem 0;
+    background:
+      radial-gradient(
+        circle at right top,
+        rgba(33, 75, 143, 0.08),
+        transparent 20%
+      ),
+      linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
     position: relative;
   }
 
@@ -227,12 +230,13 @@ const cargoTypes = [
   }
 
   .quote-card {
-    background-color: var(--brand-blue, #1e40af);
-    border-radius: 1.5rem;
+    background: linear-gradient(135deg, var(--brand-navy) 0%, #17305a 100%);
+    border-radius: 1.8rem;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-strong);
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(17, 33, 61, 0.14);
   }
 
   @media (min-width: 1024px) {
@@ -241,11 +245,10 @@ const cargoTypes = [
     }
   }
 
-  /* Info Column */
   .info-column {
     width: 100%;
-    padding: 3rem;
-    color: #ffffff;
+    padding: 2.6rem;
+    color: var(--brand-white);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -253,8 +256,8 @@ const cargoTypes = [
 
   @media (min-width: 1024px) {
     .info-column {
-      width: 40%;
-      padding: 4rem;
+      width: 42%;
+      padding: 3.3rem;
     }
   }
 
@@ -264,18 +267,32 @@ const cargoTypes = [
     gap: 3rem;
   }
 
+  .info-kicker {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(240, 219, 191, 0.12);
+    color: #f0dbbf;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
   .info-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    line-height: 1.08;
+    letter-spacing: -0.05em;
   }
 
   .info-description {
-    color: #dbeafe;
+    color: rgba(219, 234, 254, 0.84);
     margin-bottom: 2rem;
-    font-size: 1.125rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.85;
   }
 
   .contact-items {
@@ -288,13 +305,15 @@ const cargoTypes = [
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 1rem 1rem 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .contact-icon {
-    width: 3rem;
-    height: 3rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+    width: 3.1rem;
+    height: 3.1rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -309,50 +328,73 @@ const cargoTypes = [
   .contact-label {
     font-weight: 700;
     margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
   }
 
   .contact-value {
-    color: #dbeafe;
+    color: rgba(219, 234, 254, 0.8);
     font-size: 0.875rem;
-  }
-
-  .testimonial {
-    margin-top: 3rem;
-    padding: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .testimonial-quote {
-    font-style: italic;
-    color: #dbeafe;
-    margin-bottom: 1rem;
     line-height: 1.6;
   }
 
-  .testimonial-author {
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+  .trust-panel {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.2rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.3rem;
   }
 
-  .testimonial-role {
-    font-size: 0.75rem;
-    color: #bfdbfe;
+  .trust-item {
+    display: grid;
+    gap: 0.3rem;
   }
 
-  /* Form Column */
+  .trust-item strong {
+    font-size: 0.98rem;
+    letter-spacing: -0.02em;
+  }
+
+  .trust-item span {
+    color: rgba(219, 234, 254, 0.78);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
   .form-column {
     width: 100%;
-    background-color: #ffffff;
-    padding: 3rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #ffffff);
+    padding: 2.6rem;
   }
 
   @media (min-width: 1024px) {
     .form-column {
-      width: 60%;
-      padding: 4rem;
+      width: 58%;
+      padding: 3.3rem;
     }
+  }
+
+  .form-header {
+    margin-bottom: 1.6rem;
+  }
+
+  .form-kicker {
+    display: inline-flex;
+    margin-bottom: 0.7rem;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-blue);
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: var(--brand-ink);
   }
 
   .quote-form {
@@ -380,17 +422,20 @@ const cargoTypes = [
 
   .form-label {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    color: var(--brand-gray, #6b7280);
-    margin-bottom: 0.5rem;
+    color: var(--brand-muted);
+    margin-bottom: 0.55rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .form-input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid #e5e7eb;
+    padding: 0.95rem 1rem;
+    border-radius: 0.95rem;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: #f8fafc;
     outline: none;
     transition: all 0.3s ease;
     font-size: 1rem;
@@ -398,10 +443,9 @@ const cargoTypes = [
   }
 
   .form-input:focus {
-    ring: 2px;
-    ring-color: var(--brand-blue, #1e40af);
-    border-color: transparent;
-    box-shadow: 0 0 0 2px var(--brand-blue, #1e40af);
+    border-color: rgba(33, 75, 143, 0.36);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(33, 75, 143, 0.12);
   }
 
   .form-input::placeholder {
@@ -440,12 +484,12 @@ const cargoTypes = [
 
   .submit-button {
     width: 100%;
-    background-color: var(--brand-red, #dc2626);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--brand-red), #9e352f);
+    color: var(--brand-white);
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 999px;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1rem;
     border: none;
     cursor: pointer;
     display: flex;
@@ -453,20 +497,106 @@ const cargoTypes = [
     justify-content: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0);
+    box-shadow: 0 18px 32px rgba(159, 57, 49, 0.22);
   }
 
   .submit-button:hover {
-    background-color: rgba(220, 38, 38, 0.9);
-    box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.2);
-  }
-
-  .submit-button:active {
-    transform: scale(0.98);
+    transform: translateY(-2px);
+    box-shadow: 0 24px 40px rgba(159, 57, 49, 0.28);
   }
 
   .submit-button svg {
     width: 1.25rem;
     height: 1.25rem;
+  }
+
+  @media (max-width: 560px) {
+    .quote-section {
+      padding: 5rem 0;
+    }
+
+    .quote-card {
+      border-radius: 1.25rem;
+    }
+
+    .info-column,
+    .form-column {
+      padding: 1.4rem;
+    }
+
+    .info-content {
+      gap: 1.8rem;
+    }
+
+    .info-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .info-description {
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-items {
+      gap: 1rem;
+    }
+
+    .contact-item {
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.9rem 0 0 0;
+    }
+
+    .contact-icon {
+      width: 2.65rem;
+      height: 2.65rem;
+      border-radius: 0.85rem;
+    }
+
+    .contact-icon svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    .trust-panel {
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+
+    .form-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-title {
+      font-size: 1.45rem;
+    }
+
+    .quote-form {
+      gap: 1rem;
+    }
+
+    .form-row {
+      gap: 1rem;
+    }
+
+    .form-label {
+      font-size: 0.75rem;
+    }
+
+    .form-input {
+      padding: 0.9rem 0.95rem;
+      font-size: 0.95rem;
+    }
+
+    textarea.form-input {
+      min-height: 92px;
+    }
+
+    .submit-button {
+      padding: 0.95rem;
+      font-size: 0.95rem;
+    }
   }
 </style>

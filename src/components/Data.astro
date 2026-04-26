@@ -2,19 +2,19 @@
 const stats = [
   {
     value: "+100",
-    label: "Puertos Globales",
+    label: "Puntos logísticos conectados",
   },
   {
     value: "+50",
-    label: "Paises Conectados",
+    label: "Mercados atendidos",
   },
   {
-    value: "+5k",
-    label: "Rutas Internacionales",
+    value: "24 h",
+    label: "Tiempo de respuesta comercial",
   },
   {
-    value: "100%",
-    label: "Compromiso",
+    value: "1",
+    label: "Equipo coordinando todo el proceso",
   },
 ];
 ---
@@ -22,11 +22,17 @@ const stats = [
 <section class="stats-section">
   <div class="pattern-overlay"></div>
   <div class="container">
-    <h2 class="title">Su carga, en cualquier parte del mundo</h2>
-    <p class="description">
-      Nuestra red estratégica global nos permite conectar negocios en todos los
-      continentes con tiempos de tránsito óptimos y seguridad garantizada.
-    </p>
+    <div class="intro">
+      <div>
+        <span class="eyebrow">Cobertura y control</span>
+        <h2 class="title">Una operación sólida necesita visibilidad, no solo movimiento</h2>
+      </div>
+      <p class="description">
+        Nuestra red nos permite conectar origen, tránsito y destino con una
+        lectura más ejecutiva del embarque: documentación, tiempos, costos y
+        seguimiento en un mismo frente.
+      </p>
+    </div>
     <div class="stats-grid">
       {
         stats.map((stat) => (
@@ -42,9 +48,10 @@ const stats = [
 
 <style>
   .stats-section {
-    padding: 5rem 0;
-    background-color: var(--brand-blue, #1e40af);
-    color: #ffffff;
+    padding: 6rem 0;
+    background:
+      linear-gradient(135deg, var(--brand-navy) 0%, #17305a 100%);
+    color: var(--brand-white);
     overflow: hidden;
     position: relative;
   }
@@ -52,9 +59,11 @@ const stats = [
   .pattern-overlay {
     position: absolute;
     inset: 0;
-    opacity: 0.1;
-    background-image: radial-gradient(#fff 1px, transparent 1px);
-    background-size: 40px 40px;
+    opacity: 0.16;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 56px 56px;
     pointer-events: none;
   }
 
@@ -62,7 +71,6 @@ const stats = [
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 1rem;
-    text-align: center;
     position: relative;
     z-index: 10;
   }
@@ -79,68 +87,123 @@ const stats = [
     }
   }
 
-  .title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    font-style: italic;
-    line-height: 1.2;
+  .intro {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
   }
 
-  @media (min-width: 768px) {
-    .title {
-      font-size: 3rem;
-    }
+  .eyebrow {
+    display: inline-flex;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(240, 219, 191, 0.9);
+    margin-bottom: 0.9rem;
+  }
+
+  .title {
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    font-weight: 800;
+    margin-bottom: 0;
+    letter-spacing: -0.05em;
+    line-height: 1.06;
+    max-width: 38rem;
   }
 
   .description {
-    font-size: 1.25rem;
-    color: #dbeafe;
-    max-width: 48rem;
-    margin: 0 auto 3rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    color: rgba(219, 234, 254, 0.84);
+    max-width: 36rem;
+    line-height: 1.85;
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
+    .intro {
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.8fr);
+      align-items: end;
+      gap: 2rem;
+    }
+
     .stats-grid {
       grid-template-columns: repeat(4, 1fr);
     }
   }
 
   .stat-card {
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 0.75rem;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    padding: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
   }
 
   .stat-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.4);
-    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+    border-color: rgba(240, 219, 191, 0.28);
+    background-color: rgba(255, 255, 255, 0.08);
   }
 
   .stat-value {
-    font-size: 2.25rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-    color: var(--brand-red, #dc2626);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.65rem;
+    color: #f0dbbf;
+    letter-spacing: -0.06em;
     line-height: 1;
   }
 
   .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-weight: 700;
-    line-height: 1.4;
+    font-weight: 600;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  @media (max-width: 560px) {
+    .stats-section {
+      padding: 5rem 0;
+    }
+
+    .intro {
+      margin-bottom: 2rem;
+    }
+
+    .title {
+      font-size: 1.9rem;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+      padding: 1.15rem;
+      border-radius: 1rem;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+    }
+
+    .stat-label {
+      font-size: 0.76rem;
+    }
   }
 </style>

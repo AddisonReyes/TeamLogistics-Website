@@ -4,43 +4,49 @@ const services = [
     icon: "ship",
     title: "Carga Marítima LCL",
     description:
-      "Servicio de consolidación de carga marítima para envíos que no completan un contenedor. Ahorro máximo y seguridad garantizada.",
-    colorClass: "blue",
+      "Consolidación marítima para embarques que necesitan estructura, frecuencia y costos mejor distribuidos.",
+    meta: "Ideal para importadores con carga parcial",
+    accent: "navy",
   },
   {
     icon: "plane",
     title: "Carga Aérea Express",
     description:
-      "Transporte aéreo rápido para mercancías urgentes con conexiones prioritarias en los principales aeropuertos del mundo.",
-    colorClass: "red",
+      "Alternativa ágil para mercancía prioritaria, reposiciones críticas o operaciones con ventana de entrega corta.",
+    meta: "Prioridad en tiempos y coordinación",
+    accent: "red",
   },
   {
     icon: "truck",
     title: "Transporte Terrestre",
     description:
-      "Conexiones terrestres seguras en toda República Dominicana y Centroamérica, integrando su carga de puerto a puerta.",
-    colorClass: "gray",
+      "Cobertura para movimientos nacionales y regionales con seguimiento y coordinación puerta a puerta.",
+    meta: "Última milla y distribución regional",
+    accent: "sand",
   },
   {
     icon: "warehouse",
     title: "Almacenaje Seguro",
     description:
-      "Gestión de inventarios y almacenamiento en depósitos estratégicos con los más altos estándares de seguridad.",
-    colorClass: "blue",
+      "Espacios operativos para recibir, clasificar y preparar mercancía antes de su despacho o entrega.",
+    meta: "Control previo al despacho",
+    accent: "navy",
   },
   {
     icon: "globe",
     title: "Import / Export",
     description:
-      "Asesoría completa en trámites aduanales y documentación para que su comercio internacional sea fluido.",
-    colorClass: "red",
+      "Acompañamiento documental y operativo para que cada movimiento internacional llegue bien preparado.",
+    meta: "Soporte documental y comercial",
+    accent: "red",
   },
   {
     icon: "shield",
     title: "Seguro de Carga",
     description:
-      "Protección integral para sus mercancías contra todo riesgo durante el tránsito internacional y nacional.",
-    colorClass: "gray",
+      "Coberturas pensadas para reducir exposición y proteger el valor de la mercancía en tránsito.",
+    meta: "Mitigación de riesgo logístico",
+    accent: "sand",
   },
 ];
 ---
@@ -48,80 +54,86 @@ const services = [
 <section id="services" class="services-section">
   <div class="container">
     <div class="header">
-      <h2 class="subtitle">Lo Que Hacemos</h2>
-      <h3 class="title">Soluciones Logísticas a su Medida</h3>
+      <h2 class="subtitle">Soluciones</h2>
+      <h3 class="title">Servicios pensados para operar con más orden y menos fricción</h3>
       <p class="description">
-        Facilitamos el comercio internacional conectando su negocio con el resto
-        del mundo a través de servicios eficientes y rentables.
+        Cubrimos la operación completa con un enfoque comercial, documental y de
+        ejecución para que cada embarque tenga alcance claro desde el inicio.
       </p>
     </div>
 
     <div class="services-grid">
       {
-        services.map((service) => (
-          <div class="service-card">
-            <div class={`icon-container ${service.colorClass}`}>
-              <svg
-                class="icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                {service.icon === "ship" && (
-                  <>
-                    <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
-                    <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76" />
-                    <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
-                    <path d="M12 10v4" />
-                    <path d="M12 2v3" />
-                  </>
-                )}
-                {service.icon === "plane" && (
-                  <>
-                    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
-                  </>
-                )}
-                {service.icon === "truck" && (
-                  <>
-                    <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
-                    <path d="M15 18H9" />
-                    <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
-                    <circle cx="17" cy="18" r="2" />
-                    <circle cx="7" cy="18" r="2" />
-                  </>
-                )}
-                {service.icon === "warehouse" && (
-                  <>
-                    <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z" />
-                    <path d="M6 18h12" />
-                    <path d="M6 14h12" />
-                    <path d="m6 10 6-3 6 3" />
-                  </>
-                )}
-                {service.icon === "globe" && (
-                  <>
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                    <path d="M2 12h20" />
-                  </>
-                )}
-                {service.icon === "shield" && (
-                  <>
-                    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </>
-                )}
-              </svg>
+        services.map((service, index) => (
+          <article class={`service-card ${service.accent}`}>
+            <div class="service-topline">
+              <span class="service-index">0{index + 1}</span>
+              <span class="service-meta">{service.meta}</span>
+            </div>
+            <div class="service-icon-row">
+              <div class="icon-container">
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  {service.icon === "ship" && (
+                    <>
+                      <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
+                      <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76" />
+                      <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
+                      <path d="M12 10v4" />
+                      <path d="M12 2v3" />
+                    </>
+                  )}
+                  {service.icon === "plane" && (
+                    <>
+                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                    </>
+                  )}
+                  {service.icon === "truck" && (
+                    <>
+                      <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+                      <path d="M15 18H9" />
+                      <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+                      <circle cx="17" cy="18" r="2" />
+                      <circle cx="7" cy="18" r="2" />
+                    </>
+                  )}
+                  {service.icon === "warehouse" && (
+                    <>
+                      <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z" />
+                      <path d="M6 18h12" />
+                      <path d="M6 14h12" />
+                      <path d="m6 10 6-3 6 3" />
+                    </>
+                  )}
+                  {service.icon === "globe" && (
+                    <>
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </>
+                  )}
+                  {service.icon === "shield" && (
+                    <>
+                      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </>
+                  )}
+                </svg>
+              </div>
             </div>
             <h4 class="service-title">{service.title}</h4>
             <p class="service-description">{service.description}</p>
-          </div>
+          </article>
         ))
       }
     </div>
@@ -130,8 +142,8 @@ const services = [
 
 <style>
   .services-section {
-    padding: 6rem 0;
-    background-color: #ffffff;
+    padding: 6.5rem 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%);
   }
 
   .container {
@@ -153,44 +165,40 @@ const services = [
   }
 
   .header {
-    text-align: center;
-    margin-bottom: 4rem;
+    display: grid;
+    gap: 1rem;
+    max-width: 44rem;
+    margin-bottom: 3.75rem;
   }
 
   .subtitle {
-    color: var(--brand-blue, #1e40af);
-    font-weight: 700;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
+    font-family: "Barlow Condensed", sans-serif;
+    color: var(--brand-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
   }
 
   .title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .title {
-      font-size: 2.25rem;
-    }
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
+    color: var(--brand-ink);
   }
 
   .description {
-    font-size: 1.25rem;
-    color: var(--brand-gray, #6b7280);
-    max-width: 42rem;
-    margin: 0 auto;
-    line-height: 1.75;
+    font-size: 1.02rem;
+    color: var(--brand-muted);
+    max-width: 38rem;
+    line-height: 1.8;
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.3rem;
   }
 
   @media (min-width: 768px) {
@@ -199,67 +207,167 @@ const services = [
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1120px) {
     .services-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
   .service-card {
-    padding: 2rem;
-    border: 1px solid #f3f4f6;
-    border-radius: 1rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    background-color: #ffffff;
-    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 100%;
+    padding: 1.7rem;
+    border-radius: 1.4rem;
+    border: 1px solid var(--brand-border);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), #ffffff);
+    box-shadow: var(--shadow-soft);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    border-radius: 1.4rem 0 0 1.4rem;
+    background: var(--service-accent);
   }
 
   .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow:
-      0 20px 25px -5px rgba(0, 0, 0, 0.1),
-      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+    border-color: rgba(33, 75, 143, 0.14);
+  }
+
+  .service-card.navy {
+    --service-accent: var(--brand-blue);
+  }
+
+  .service-card.red {
+    --service-accent: var(--brand-red);
+  }
+
+  .service-card.sand {
+    --service-accent: #b08a56;
+  }
+
+  .service-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .service-index {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.16em;
+    color: var(--service-accent);
+  }
+
+  .service-meta {
+    font-size: 0.76rem;
+    color: var(--brand-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
+  .service-icon-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .icon-container {
-    width: 4rem;
-    height: 4rem;
+    width: 3.75rem;
+    height: 3.75rem;
     border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .icon-container.blue {
-    background-color: #eff6ff;
-    color: var(--brand-blue, #1e40af);
-  }
-
-  .icon-container.red {
-    background-color: #fef2f2;
-    color: var(--brand-red, #dc2626);
-  }
-
-  .icon-container.gray {
-    background-color: #f3f4f6;
-    color: var(--brand-gray, #6b7280);
+    background: color-mix(in srgb, var(--service-accent) 12%, white);
+    color: var(--service-accent);
   }
 
   .icon {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   .service-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #111827;
-    margin-bottom: 1rem;
+    color: var(--brand-ink);
+    letter-spacing: -0.03em;
   }
 
   .service-description {
-    color: var(--brand-gray, #6b7280);
-    line-height: 1.625;
+    color: var(--brand-muted);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 560px) {
+    .services-section {
+      padding: 5rem 0;
+    }
+
+    .header {
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .title {
+      font-size: 1.85rem;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      gap: 1rem;
+    }
+
+    .service-card {
+      padding: 1.25rem;
+      border-radius: 1.1rem;
+    }
+
+    .service-topline {
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .service-meta {
+      font-size: 0.7rem;
+    }
+
+    .icon-container {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 0.85rem;
+    }
+
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .service-title {
+      font-size: 1.08rem;
+    }
+
+    .service-description {
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
   }
 </style>

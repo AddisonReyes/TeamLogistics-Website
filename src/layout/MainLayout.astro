@@ -13,37 +13,76 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <title>{title} | {description}</title>
+    <title>{title}</title>
   </head>
   <body>
     <slot />
 
     <style is:global>
       :root {
-        --blue: #2b4e9c;
-        --grey: #737373;
-        --red: #bf2430;
-        --white: #fff;
+        --brand-ink: #0f172a;
+        --brand-navy: #11213d;
+        --brand-blue: #214b8f;
+        --brand-blue-soft: #dce7f7;
+        --brand-red: #c3473f;
+        --brand-red-soft: #f3dbd8;
+        --brand-sand: #f4efe8;
+        --brand-surface: #fffdf9;
+        --brand-surface-2: #f8fafc;
+        --brand-border: rgba(15, 23, 42, 0.1);
+        --brand-muted: #5f6c83;
+        --brand-white: #ffffff;
+        --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+        --shadow-strong: 0 28px 70px rgba(10, 20, 40, 0.16);
+      }
 
-        --brand-blue: #1e40af;
-        --brand-red: #dc2626;
-        --brand-gray: #6b7280;
+      html {
+        scroll-behavior: smooth;
       }
 
       * {
-        font-family: Arial, Helvetica, sans-serif;
         box-sizing: border-box;
         padding: 0;
         margin: 0;
       }
 
+      body {
+        font-family: "Sora", "Segoe UI", sans-serif;
+        color: var(--brand-ink);
+        background:
+          radial-gradient(circle at top, rgba(33, 75, 143, 0.08), transparent 32%),
+          linear-gradient(180deg, #fffdfb 0%, #f7f9fc 100%);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
       main {
         flex-direction: column;
         display: flex;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      ::selection {
+        color: var(--brand-white);
+        background: var(--brand-blue);
       }
     </style>
   </body>

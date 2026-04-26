@@ -1,9 +1,9 @@
 ---
 const quickLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#servicios", label: "Nuestros Servicios" },
-  { href: "#nosotros", label: "Sobre Nosotros" },
-  { href: "#contacto", label: "Cotizar Envío" },
+  { href: "#home", label: "Inicio" },
+  { href: "#services", label: "Nuestros Servicios" },
+  { href: "#about", label: "Sobre Nosotros" },
+  { href: "#contact", label: "Cotizar Envío" },
   { href: "#faq", label: "Preguntas Frecuentes" },
 ];
 
@@ -37,103 +37,14 @@ const socialLinks = [
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <!-- Company Info -->
       <div class="footer-column">
-        <div class="logo-container">
-          <div class="logo-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"
-              ></path>
-              <path d="M15 18H9"></path>
-              <path
-                d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"
-              ></path>
-              <circle cx="17" cy="18" r="2"></circle>
-              <circle cx="7" cy="18" r="2"></circle>
-            </svg>
-          </div>
-          <span class="logo-text">TEAM LOGISTICS</span>
-        </div>
+        <span class="logo-text">Team Logistics</span>
         <p class="company-description">
-          Su socio estratégico en logística integral. Especialistas en
-          consolidación de carga en República Dominicana y el Caribe. Conectando
-          negocios con eficiencia y ahorro.
+          Coordinamos carga con una mirada más profesional del proceso:
+          consolidación, documentación, tránsito y entrega con soporte local.
         </p>
-        <div class="social-links">
-          {
-            socialLinks.map((social) => (
-              <a
-                href={social.href}
-                class="social-link"
-                aria-label={social.name}
-              >
-                {social.icon === "linkedin" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect width="4" height="12" x="2" y="9" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                )}
-                {social.icon === "facebook" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  </svg>
-                )}
-                {social.icon === "instagram" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                )}
-              </a>
-            ))
-          }
-        </div>
       </div>
 
-      <!-- Quick Links -->
       <div class="footer-column">
         <h4 class="footer-title">Enlaces Rápidos</h4>
         <ul class="footer-list">
@@ -149,7 +60,6 @@ const socialLinks = [
         </ul>
       </div>
 
-      <!-- Services -->
       <div class="footer-column">
         <h4 class="footer-title">Servicios</h4>
         <ul class="footer-list">
@@ -165,7 +75,6 @@ const socialLinks = [
         </ul>
       </div>
 
-      <!-- Contact -->
       <div class="footer-column">
         <h4 class="footer-title">Contacto</h4>
         <ul class="footer-list contact-list">
@@ -228,7 +137,6 @@ const socialLinks = [
       </div>
     </div>
 
-    <!-- Bottom Bar -->
     <div class="footer-bottom">
       <p class="copyright">
         © 2026 Team Logistics. Todos los derechos reservados.
@@ -243,8 +151,14 @@ const socialLinks = [
 
 <style>
   .footer {
-    background-color: #111827;
-    color: #d1d5db;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(33, 75, 143, 0.18),
+        transparent 25%
+      ),
+      #0b1220;
+    color: #d1d8e5;
     padding: 4rem 0;
   }
 
@@ -294,17 +208,18 @@ const socialLinks = [
   .logo-container {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
   }
 
   .logo-icon {
-    background-color: var(--brand-blue, #1e40af);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-navy));
+    padding: 0.7rem;
+    border-radius: 0.85rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 18px 30px rgba(17, 33, 61, 0.35);
   }
 
   .logo-icon svg {
@@ -317,39 +232,36 @@ const socialLinks = [
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 
   .company-description {
-    font-size: 0.875rem;
-    line-height: 1.625;
+    font-size: 0.92rem;
+    line-height: 1.8;
     margin-bottom: 1.5rem;
   }
 
-  .social-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .social-link {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.05);
-    display: flex;
+  .footer-cta {
+    display: inline-flex;
+    width: fit-content;
     align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    color: #d1d5db;
-  }
-
-  .social-link:hover {
-    background-color: var(--brand-blue, #1e40af);
+    padding: 0.95rem 1.2rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
     color: #ffffff;
-    transform: translateY(-2px);
+    font-weight: 600;
+    transition:
+      transform 0.25s ease,
+      background 0.25s ease;
   }
 
-  /* Footer Lists */
+  .footer-cta:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
   .footer-title {
     color: #ffffff;
     font-weight: 700;
@@ -377,10 +289,9 @@ const socialLinks = [
   }
 
   .footer-link:hover {
-    color: var(--brand-blue, #1e40af);
+    color: #f0dbbf;
   }
 
-  /* Contact List */
   .contact-list {
     gap: 1rem;
   }
@@ -394,15 +305,14 @@ const socialLinks = [
   .contact-icon {
     width: 1.25rem;
     height: 1.25rem;
-    color: var(--brand-red, #dc2626);
+    color: #f0dbbf;
     flex-shrink: 0;
     margin-top: 0.125rem;
   }
 
-  /* Bottom Bar */
   .footer-bottom {
     padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -418,7 +328,7 @@ const socialLinks = [
 
   .copyright {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: #8e99ae;
     margin: 0;
   }
 
@@ -429,12 +339,51 @@ const socialLinks = [
 
   .legal-link {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: #8e99ae;
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .legal-link:hover {
     color: #ffffff;
+  }
+
+  @media (max-width: 560px) {
+    .footer {
+      padding: 3.2rem 0;
+    }
+
+    .footer-grid {
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo-text {
+      font-size: 1.1rem;
+    }
+
+    .company-description {
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .footer-title {
+      margin-bottom: 1rem;
+    }
+
+    .footer-list {
+      gap: 0.8rem;
+    }
+
+    .footer-bottom {
+      align-items: flex-start;
+      gap: 1rem;
+      padding-top: 2rem;
+    }
+
+    .legal-links {
+      flex-direction: column;
+      gap: 0.7rem;
+    }
   }
 </style>
