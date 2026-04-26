@@ -1,4 +1,6 @@
 ---
+import Icon from "./common/Icon.astro";
+
 const sectors = ["Retail", "Industria", "Distribución"];
 
 const operations = [
@@ -13,6 +15,21 @@ const operations = [
   {
     label: "Operativas",
     value: "LCL, FCL, aérea y terrestre",
+  },
+];
+
+const heroStats = [
+  {
+    value: "15+",
+    label: "Años acompañando importadores y distribuidores",
+  },
+  {
+    value: "24 h",
+    label: "para estructurar cotizaciones con alcance claro",
+  },
+  {
+    value: "1 equipo",
+    label: "local para coordinar origen, tránsito y entrega",
   },
 ];
 ---
@@ -46,19 +63,7 @@ const operations = [
       <div class="hero-buttons">
         <a href="#contact" class="btn-primary">
           Solicitar cotización
-          <svg
-            class="chevron"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+          <Icon name="chevron-right" class="chevron" size={20} />
         </a>
         <a href="#services" class="btn-secondary">Ver soluciones</a>
       </div>
@@ -68,24 +73,14 @@ const operations = [
       </div>
 
       <div class="stats">
-        <div class="stat-item">
-          <div class="stat-number">15+</div>
-          <div class="stat-label">
-            Años acompañando importadores y distribuidores
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">24 h</div>
-          <div class="stat-label">
-            para estructurar cotizaciones con alcance claro
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">1 equipo</div>
-          <div class="stat-label">
-            local para coordinar origen, tránsito y entrega
-          </div>
-        </div>
+        {
+          heroStats.map((stat) => (
+            <div class="stat-item">
+              <div class="stat-number">{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))
+        }
       </div>
     </div>
 

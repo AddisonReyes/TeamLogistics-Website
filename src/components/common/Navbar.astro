@@ -1,3 +1,17 @@
+---
+const navigationLinks = [
+  { href: "#home", label: "Inicio" },
+  { href: "#services", label: "Servicios" },
+  { href: "#about", label: "Nosotros" },
+  { href: "#faq", label: "Preguntas" },
+];
+
+const quoteLink = {
+  href: "#contact",
+  label: "Solicitar cotización",
+};
+---
+
 <header class="site-header">
   <nav class="nav-shell" aria-label="Principal">
     <a class="brand" href="#home" aria-label="Ir al inicio">
@@ -5,7 +19,7 @@
     </a>
 
     <button
-      id="menu-toggle"
+      class="menu-toggle"
       aria-label="Abrir menú"
       aria-controls="menu"
       aria-expanded="false"
@@ -15,23 +29,22 @@
       <span></span>
     </button>
 
-    <div class="menu-backdrop" id="menu-backdrop"></div>
+    <div class="menu-backdrop"></div>
 
-    <ul id="menu">
+    <ul class="menu" id="menu">
+      {
+        navigationLinks.map((link) => (
+          <li>
+            <a href={link.href} class="nav-link">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
       <li>
-        <a href="#home">Inicio</a>
-      </li>
-      <li>
-        <a href="#services">Servicios</a>
-      </li>
-      <li>
-        <a href="#about">Nosotros</a>
-      </li>
-      <li>
-        <a href="#faq">Preguntas</a>
-      </li>
-      <li>
-        <a href="#contact" id="btn-quote">Solicitar cotización</a>
+        <a href={quoteLink.href} class="nav-link nav-link--cta">
+          {quoteLink.label}
+        </a>
       </li>
     </ul>
   </nav>
@@ -82,7 +95,7 @@
     flex-shrink: 0;
   }
 
-  nav ul {
+  .menu {
     align-items: center;
     list-style: none;
     display: flex;
@@ -94,7 +107,7 @@
     align-items: center;
   }
 
-  nav a {
+  .nav-link {
     position: relative;
     text-decoration: none;
     color: var(--brand-muted);
@@ -104,7 +117,7 @@
     transition: color 0.25s ease;
   }
 
-  nav a::after {
+  .nav-link::after {
     content: "";
     position: absolute;
     left: 0;
@@ -117,15 +130,15 @@
     transition: transform 0.25s ease;
   }
 
-  nav a:hover {
+  .nav-link:hover {
     color: var(--brand-ink);
   }
 
-  nav a:hover::after {
+  .nav-link:hover::after {
     transform: scaleX(1);
   }
 
-  #btn-quote {
+  .nav-link--cta {
     padding: 0.85rem 1.2rem;
     border-radius: 999px;
     color: var(--brand-white);
@@ -133,16 +146,16 @@
     box-shadow: 0 16px 26px rgba(17, 33, 61, 0.18);
   }
 
-  #btn-quote::after {
+  .nav-link--cta::after {
     display: none;
   }
 
-  #btn-quote:hover {
+  .nav-link--cta:hover {
     color: var(--brand-white);
     background: linear-gradient(135deg, #2858a7, #162949);
   }
 
-  #menu-toggle {
+  .menu-toggle {
     background: none;
     flex-direction: column;
     justify-content: space-between;
@@ -155,7 +168,7 @@
     flex-shrink: 0;
   }
 
-  #menu-toggle span {
+  .menu-toggle span {
     transition: all 0.3s ease;
     background-color: var(--brand-ink);
     border-radius: 999px;
@@ -164,15 +177,15 @@
     width: 100%;
   }
 
-  #menu-toggle.active span:nth-child(1) {
+  .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(8px, 6px);
   }
 
-  #menu-toggle.active span:nth-child(2) {
+  .menu-toggle.active span:nth-child(2) {
     opacity: 0;
   }
 
-  #menu-toggle.active span:nth-child(3) {
+  .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(8px, -7px);
   }
 
@@ -198,7 +211,7 @@
       box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
     }
 
-    #menu-toggle {
+    .menu-toggle {
       display: flex;
       z-index: 1001;
       width: 3.2rem;
@@ -215,7 +228,7 @@
       height: 58px;
     }
 
-    nav ul {
+    .menu {
       flex-direction: column;
       align-items: stretch;
       position: absolute;
@@ -236,7 +249,7 @@
         transform 0.3s ease;
     }
 
-    nav ul.active {
+    .menu.active {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
@@ -246,22 +259,22 @@
       width: 100%;
     }
 
-    nav a {
+    .nav-link {
       display: block;
       padding: 0.95rem 1rem;
       font-size: 0.98rem;
       border-radius: 0.9rem;
     }
 
-    nav a::after {
+    .nav-link::after {
       display: none;
     }
 
-    nav a:hover {
+    .nav-link:hover {
       background: rgba(33, 75, 143, 0.06);
     }
 
-    #btn-quote {
+    .nav-link--cta {
       margin-top: 0.35rem;
       text-align: center;
     }
@@ -293,19 +306,19 @@
       height: 52px;
     }
 
-    #menu-toggle {
+    .menu-toggle {
       width: 3rem;
       height: 3rem;
       padding: 0.72rem 0.64rem;
       border-radius: 0.95rem;
     }
 
-    nav ul {
+    .menu {
       top: calc(100% + 0.8rem);
       padding: 0.8rem;
     }
 
-    nav a {
+    .nav-link {
       padding: 0.9rem 0.9rem;
       font-size: 0.95rem;
     }
@@ -313,13 +326,26 @@
 </style>
 
 <script>
-  const siteHeader = document.querySelector(".site-header");
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
-  const menuBackdrop = document.getElementById("menu-backdrop");
+  const HIDE_THRESHOLD = 120;
+  const TOP_RESET_THRESHOLD = 12;
+
+  const siteHeader = document.querySelector<HTMLElement>(".site-header");
+  const menuToggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>(".menu");
+  const menuBackdrop = document.querySelector<HTMLElement>(".menu-backdrop");
   const mobileNavbarQuery = window.matchMedia("(max-width: 768px)");
   let lastScrollY = window.scrollY;
   let isTicking = false;
+
+  const setMenuState = (isOpen: boolean) => {
+    menuToggle?.classList.toggle("active", isOpen);
+    menu?.classList.toggle("active", isOpen);
+    menuBackdrop?.classList.toggle("active", isOpen);
+    menuToggle?.setAttribute("aria-expanded", String(isOpen));
+    siteHeader?.classList.remove("is-hidden");
+  };
+
+  const closeMenu = () => setMenuState(false);
 
   const syncNavbarVisibility = () => {
     if (!siteHeader) {
@@ -328,7 +354,7 @@
     }
 
     const currentScrollY = window.scrollY;
-    const isMenuOpen = menu?.classList.contains("active");
+    const isMenuOpen = menu?.classList.contains("active") ?? false;
 
     if (!mobileNavbarQuery.matches || isMenuOpen) {
       siteHeader.classList.remove("is-hidden");
@@ -338,7 +364,7 @@
     }
 
     const scrollingDown = currentScrollY > lastScrollY;
-    const passedHideThreshold = currentScrollY > 120;
+    const passedHideThreshold = currentScrollY > HIDE_THRESHOLD;
 
     if (scrollingDown && passedHideThreshold) {
       siteHeader.classList.add("is-hidden");
@@ -346,7 +372,7 @@
       siteHeader.classList.remove("is-hidden");
     }
 
-    if (currentScrollY <= 12) {
+    if (currentScrollY <= TOP_RESET_THRESHOLD) {
       siteHeader.classList.remove("is-hidden");
     }
 
@@ -355,35 +381,20 @@
   };
 
   menuToggle?.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    menu?.classList.toggle("active");
-    menuBackdrop?.classList.toggle("active");
-    siteHeader?.classList.remove("is-hidden");
-    menuToggle.setAttribute(
-      "aria-expanded",
-      menuToggle.classList.contains("active") ? "true" : "false",
-    );
+    setMenuState(!(menu?.classList.contains("active") ?? false));
   });
 
-  const menuLinks = menu?.querySelectorAll("a");
-  menuLinks?.forEach((link) => {
-    link.addEventListener("click", () => {
-      menuToggle?.classList.remove("active");
-      menu?.classList.remove("active");
-      menuBackdrop?.classList.remove("active");
-      siteHeader?.classList.remove("is-hidden");
-      menuToggle?.setAttribute("aria-expanded", "false");
-    });
+  menu?.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("a")) {
+      closeMenu();
+    }
   });
 
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (!target.closest("nav")) {
-      menuToggle?.classList.remove("active");
-      menu?.classList.remove("active");
-      menuBackdrop?.classList.remove("active");
-      siteHeader?.classList.remove("is-hidden");
-      menuToggle?.setAttribute("aria-expanded", "false");
+      closeMenu();
     }
   });
 
@@ -401,6 +412,7 @@
   mobileNavbarQuery.addEventListener("change", () => {
     siteHeader?.classList.remove("is-hidden");
     lastScrollY = window.scrollY;
+    closeMenu();
   });
 
   syncNavbarVisibility();

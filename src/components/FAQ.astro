@@ -1,4 +1,19 @@
 ---
+import Icon from "./common/Icon.astro";
+
+type FAQGroupIcon = "building" | "clipboard" | "users";
+
+interface FAQItem {
+  answer: string;
+  question: string;
+}
+
+interface FAQGroup {
+  category: string;
+  icon: FAQGroupIcon;
+  items: FAQItem[];
+}
+
 const faqs = [
   {
     category: "Empresa",
@@ -48,7 +63,7 @@ const faqs = [
       },
     ],
   },
-];
+] satisfies FAQGroup[];
 ---
 
 <section id="faq" class="faq-section">
@@ -64,92 +79,20 @@ const faqs = [
 
     <div class="faq-groups">
       {
-        faqs.map((group, groupIdx) => (
+        faqs.map((group) => (
           <div class="faq-group">
             <div class="group-header">
               <span class="group-icon">
-                {group.icon === "building" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-                    <path d="M9 22v-4h6v4" />
-                    <path d="M8 6h.01" />
-                    <path d="M16 6h.01" />
-                    <path d="M12 6h.01" />
-                    <path d="M12 10h.01" />
-                    <path d="M12 14h.01" />
-                    <path d="M16 10h.01" />
-                    <path d="M16 14h.01" />
-                    <path d="M8 10h.01" />
-                    <path d="M8 14h.01" />
-                  </svg>
-                )}
-                {group.icon === "clipboard" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
-                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
-                    <path d="M9 14l2 2 4-4" />
-                  </svg>
-                )}
-                {group.icon === "users" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                )}
+                <Icon name={group.icon} size={20} />
               </span>
               <h3 class="group-title">{group.category}</h3>
             </div>
             <div class="faq-items">
-              {group.items.map((faq, faqIdx) => (
-                <div class="faq-item" data-group={groupIdx} data-index={faqIdx}>
+              {group.items.map((faq) => (
+                <div class="faq-item">
                   <button class="faq-button" type="button">
                     <span class="faq-question">{faq.question}</span>
-                    <svg
-                      class="faq-chevron"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
+                    <Icon name="chevron-down" class="faq-chevron" size={24} />
                   </button>
                   <div class="faq-answer">
                     <div class="faq-answer-content">{faq.answer}</div>
@@ -161,20 +104,6 @@ const faqs = [
         ))
       }
     </div>
-
-    <!--
-        <div class="cta-card">
-            <div class="cta-decoration"></div>
-            <div class="cta-content">
-                <h3 class="cta-title">¿Aún tiene dudas?</h3>
-                <p class="cta-description">
-                    Nuestro equipo de expertos está listo para asesorarle en su próximo
-                    movimiento logístico sin compromiso alguno.
-                </p>
-                <a href="#contacto" class="cta-button"> Contactar a un Asesor </a>
-            </div>
-        </div>
-    -->
   </div>
 </section>
 
@@ -400,24 +329,26 @@ const faqs = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const faqItems = document.querySelectorAll(".faq-item");
+    const faqGroups = document.querySelectorAll<HTMLElement>(".faq-items");
 
-    faqItems.forEach((item) => {
-      const button = item.querySelector(".faq-button");
+    faqGroups.forEach((group) => {
+      group.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+        const button = target.closest<HTMLButtonElement>(".faq-button");
 
-      button?.addEventListener("click", () => {
-        const isOpen = item.classList.contains("open");
+        if (!button) {
+          return;
+        }
 
-        // Close all items in the same group
-        const group = item.getAttribute("data-group");
-        const groupItems = document.querySelectorAll(`[data-group="${group}"]`);
-        groupItems.forEach((groupItem) => {
-          groupItem.classList.remove("open");
+        const currentItem = button.closest<HTMLElement>(".faq-item");
+        const wasOpen = currentItem?.classList.contains("open");
+
+        group.querySelectorAll<HTMLElement>(".faq-item").forEach((item) => {
+          item.classList.remove("open");
         });
 
-        // Toggle current item
-        if (!isOpen) {
-          item.classList.add("open");
+        if (currentItem && !wasOpen) {
+          currentItem.classList.add("open");
         }
       });
     });
