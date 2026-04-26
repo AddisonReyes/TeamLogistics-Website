@@ -1,60 +1,103 @@
 # Team Logistics Website
 
-Marketing website built with Astro (v6) + Tailwind (v4) and deployed via the Cloudflare adapter.
+Marketing website for Team Logistics built with Astro v6 and Tailwind v4.
+
+## Stack
+
+- Astro
+- Tailwind CSS v4 via `@tailwindcss/vite`
+- Astro React integration enabled
+- Cloudflare Pages for deployment
 
 ## Development
 
-Install dependencies (repo uses npm + `package-lock.json`):
+Install dependencies:
 
 ```sh
 npm ci
 ```
 
-Run the dev server (Astro default: `http://localhost:4321`):
+Start the local development server:
 
 ```sh
 npm run dev
 ```
 
-Optional project check (Astro `check`):
+Run Astro checks:
 
 ```sh
 npm run astro -- check
 ```
 
-## Build / Preview
+## Build
 
-Build production output to `dist/`:
+Create the production build:
 
 ```sh
 npm run build
 ```
 
-Preview the production build locally:
+Preview the built site locally:
 
 ```sh
 npm run preview
 ```
 
-## Cloudflare / Wrangler
+The production output is generated in `dist/`.
 
-This project uses `@astrojs/cloudflare` (see `astro.config.mjs`). Wrangler is configured in `wrangler.jsonc` and expects the Worker entrypoint at `dist/_worker.js/index.js`.
+## Deployment
 
-If you use Wrangler locally or for deploys, build first:
+This project is configured for Cloudflare Pages using `wrangler.jsonc`.
 
-```sh
-npm run build
+Current Pages config:
+
+- Project name: `teamlogistics`
+- Build output directory: `./dist`
+
+If you deploy from the Cloudflare dashboard, make sure the build output directory matches `dist`.
+
+## Project Structure
+
+```text
+src/
+  components/
+    common/
+      Footer.astro
+      Icon.astro
+      Navbar.astro
+    Data.astro
+    FAQ.astro
+    Features.astro
+    Hero.astro
+    QuoteForm.astro
+    Services.astro
+  layout/
+    MainLayout.astro
+  pages/
+    index.astro
+  styles/
+    global.css
+public/
+  favicon.ico
+  favicon.svg
+  tl_logo.png
 ```
 
-Then run Wrangler commands (example):
+## Page Composition
 
-```sh
-npx wrangler dev
-```
+The home page is assembled in `src/pages/index.astro` with these sections:
 
-## Code Structure
+- Navbar
+- Hero
+- Services
+- Features
+- Data
+- FAQ
+- Quote form
+- Footer
 
-- Routes: `src/pages/`
-- Main page: `src/pages/index.astro`
-- Layout: `src/layout/MainLayout.astro`
-- Global Tailwind directives: `src/styles/global.css` (imported by `MainLayout.astro`)
+## Styling Notes
+
+- Tailwind is available, but most of the current UI uses component-scoped CSS.
+- Global CSS variables, base styles, and font imports are defined in `src/layout/MainLayout.astro`.
+- Brand styling is built around navy, blue, red, sand, and soft surface tokens declared as CSS variables.

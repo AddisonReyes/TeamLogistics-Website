@@ -2,34 +2,53 @@
 
 ## Stack / Deploy Target
 
-- Astro site (Astro v6) with Tailwind (Tailwind v4 via `@tailwindcss/vite`) and optional React (`@astrojs/react` integration is enabled).
-- Cloudflare deployment: `@astrojs/cloudflare` adapter is configured in `astro.config.mjs`.
-- Cloudflare Worker entrypoint after build is `dist/_worker.js/index.js` (see `wrangler.jsonc`). Build before any `wrangler`-based deploy/dev.
+- Astro site (Astro v6) with Tailwind v4 via `@tailwindcss/vite`.
+- `@astrojs/react` is installed and enabled in `astro.config.mjs`, but the current site is built with `.astro` components.
+- Deployment target is Cloudflare Pages using static output.
+- Pages configuration lives in `wrangler.jsonc` with `pages_build_output_dir: "./dist"`.
 
-## Commands (Repo Uses npm + package-lock)
+## Commands
 
-- Install: `npm ci` (preferred because `package-lock.json` is present).
-- Dev server: `npm run dev` (Astro dev, default `http://localhost:4321`).
-- Typecheck/config check: `npm run astro -- check`.
-- Production build: `npm run build` (outputs `dist/`).
-- Preview build locally: `npm run preview` (use this when debugging Cloudflare adapter behavior).
+- Install dependencies: `npm ci`
+- Start local dev server: `npm run dev`
+- Run Astro checks: `npm run astro -- check`
+- Build production output: `npm run build`
+- Preview the built site locally: `npm run preview`
 
 ## Project Entry Points
 
-- Routes live in `src/pages/`.
-- Main page composition is `src/pages/index.astro`.
-- Global CSS is wired via `src/layout/MainLayout.astro` importing `src/styles/global.css`.
+- Main route: `src/pages/index.astro`
+- Main layout: `src/layout/MainLayout.astro`
+- Global Tailwind directives: `src/styles/global.css`
+- Static assets: `public/`
 
-## Styling Conventions / Gotchas
+## Current Page Composition
 
-- Tailwind is available, but most styling is component-local `<style>` blocks plus CSS variables defined in `MainLayout.astro` (`--brand-*`, `--blue`, `--red`, etc.).
-- `src/styles/global.css` only contains Tailwind directives; don’t delete the import in `MainLayout.astro` unless you intend to remove Tailwind.
+- `src/pages/index.astro` composes the landing page from:
+- `src/components/common/Navbar.astro`
+- `src/components/Hero.astro`
+- `src/components/Services.astro`
+- `src/components/Features.astro`
+- `src/components/Data.astro`
+- `src/components/FAQ.astro`
+- `src/components/QuoteForm.astro`
+- `src/components/common/Footer.astro`
+
+## Styling Conventions
+
+- Most visual styling is defined in component-local `<style>` blocks.
+- Shared design tokens and global resets live in `MainLayout.astro`.
+- The current brand palette uses CSS variables such as `--brand-navy`, `--brand-blue`, `--brand-red`, `--brand-sand`, and related surface, border, and shadow tokens.
+- Typography is loaded from Google Fonts in `MainLayout.astro` and currently uses `Sora` plus `Barlow Condensed`.
+- `src/styles/global.css` should remain imported by `MainLayout.astro` because it wires Tailwind into the app.
 
 ## Cloudflare Notes
 
-- `public/.assetsignore` excludes `_worker.js` and `_routes.json` from static assets; keep this in mind when adding build artifacts.
-- `wrangler` is available via dependencies (no top-level script); use `npx wrangler ...` if you need to interact with Cloudflare locally.
+- This repo is configured for Cloudflare Pages, not a Cloudflare Worker entrypoint.
+- `wrangler.jsonc` is used for Pages metadata only; the production output that matters is `dist/`.
+- Do not commit `.wrangler/` artifacts. They are local/generated files and are ignored by `.gitignore`.
 
 ## Repo Hygiene
 
-- When searching, scope to `src/` (or exclude `node_modules/`) to avoid huge, noisy results.
+- Scope searches to `src/` or exclude `node_modules/` for faster, cleaner results.
+- `dist/` is generated build output and should not be edited manually.
