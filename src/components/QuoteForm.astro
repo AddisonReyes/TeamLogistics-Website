@@ -7,13 +7,14 @@ interface QuoteContactDetail {
   value: string;
 }
 
-const cargoTypes = [
-  "Carga General",
-  "Perecederos",
-  "Electrónicos",
-  "Maquinaria",
-  "Otros",
-];
+interface ContactMethod {
+  icon: "mail" | "phone" | "send";
+  label: string;
+  value: string;
+  description: string;
+  href: string;
+  external?: boolean;
+}
 
 const quoteContactDetails = [
   {
@@ -27,6 +28,31 @@ const quoteContactDetails = [
     value: "Respuesta comercial en menos de 24 horas",
   },
 ] satisfies QuoteContactDetail[];
+
+const contactMethods = [
+  {
+    icon: "mail",
+    label: "Correo corporativo",
+    value: "admin@teamlogistic.net",
+    description: "Para cotizaciones, seguimiento comercial y consultas generales.",
+    href: "mailto:admin@teamlogistic.net",
+  },
+  {
+    icon: "send",
+    label: "WhatsApp",
+    value: "Contacto inmediato",
+    description: "Converse con el equipo por mensaje directo.",
+    href: "https://wa.me/message/LD6T4PHQNNRWL1",
+    external: true,
+  },
+  {
+    icon: "phone",
+    label: "Teléfono",
+    value: "+1 (809) 285-7665",
+    description: "Atención directa para coordinar su operación.",
+    href: "tel:+18092857665",
+  },
+] satisfies ContactMethod[];
 ---
 
 <section id="contact" class="quote-section">
@@ -35,13 +61,14 @@ const quoteContactDetails = [
       <div class="info-column">
         <div class="info-content">
           <div>
-            <span class="info-kicker">Cotización profesional</span>
+            <span class="info-kicker">Contacto profesional</span>
             <h3 class="info-title">
-              Cuéntenos su operación y armamos el siguiente paso
+              Cuéntenos su operación y coordinamos el siguiente paso
             </h3>
             <p class="info-description">
-              Evaluamos origen, destino, modalidad, volumen y necesidades
-              documentales para responder con una propuesta más clara y útil.
+              Si desea conversar sobre origen, destino, modalidad o tiempos de
+              respuesta, puede escribirnos o llamarnos directamente por el
+              canal que le resulte más cómodo.
             </p>
 
             <div class="contact-items">
@@ -63,85 +90,33 @@ const quoteContactDetails = [
         </div>
       </div>
 
-      <div class="form-column">
-        <div class="form-header">
-          <span class="form-kicker">Formulario</span>
-          <h4 class="form-title">Comparta los datos básicos de su embarque</h4>
+      <div class="contact-column">
+        <div class="contact-header">
+          <span class="contact-kicker">Canales activos</span>
+          <h4 class="contact-title">Elija la vía que prefiera</h4>
         </div>
 
-        <form class="quote-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Nombre Completo</label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="Ej. Carlos Rodríguez"
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Correo Electrónico</label>
-              <input
-                type="email"
-                class="form-input"
-                placeholder="carlos@empresa.com"
-              />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Origen</label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="Ciudad, País"
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Destino</label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="Ciudad, País"
-              />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Tipo de Carga</label>
-              <select class="form-input">
-                {cargoTypes.map((type) => <option>{type}</option>)}
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Volumen Estimado (m³)</label>
-              <div class="input-with-icon">
-                <input
-                  type="number"
-                  class="form-input"
-                  placeholder="0.00"
-                  step="0.01"
-                />
-                <Icon name="package" class="input-icon" size={20} />
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Mensaje Adicional</label>
-            <textarea
-              rows="4"
-              class="form-input"
-              placeholder="Cuéntenos más sobre su envío..."></textarea>
-          </div>
-
-          <button type="submit" class="submit-button">
-            Enviar Solicitud
-            <Icon name="send" size={20} />
-          </button>
-        </form>
+        <div class="method-list">
+          {
+            contactMethods.map((method) => (
+              <a
+                href={method.href}
+                class="method-card"
+                target={method.external ? "_blank" : undefined}
+                rel={method.external ? "noreferrer" : undefined}
+              >
+                <div class="method-icon">
+                  <Icon name={method.icon} size={22} />
+                </div>
+                <div class="method-copy">
+                  <div class="method-label">{method.label}</div>
+                  <div class="method-value">{method.value}</div>
+                  <p class="method-description">{method.description}</p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -286,24 +261,24 @@ const quoteContactDetails = [
     line-height: 1.6;
   }
 
-  .form-column {
+  .contact-column {
     width: 100%;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), #ffffff);
     padding: 2.6rem;
   }
 
   @media (min-width: 1024px) {
-    .form-column {
+    .contact-column {
       width: 58%;
       padding: 3.3rem;
     }
   }
 
-  .form-header {
+  .contact-header {
     margin-bottom: 1.6rem;
   }
 
-  .form-kicker {
+  .contact-kicker {
     display: inline-flex;
     margin-bottom: 0.7rem;
     font-family: "Barlow Condensed", sans-serif;
@@ -313,125 +288,86 @@ const quoteContactDetails = [
     color: var(--brand-blue);
   }
 
-  .form-title {
+  .contact-title {
     font-size: 1.8rem;
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.04em;
     color: var(--brand-ink);
+    margin: 0;
   }
 
-  .quote-form {
+  .method-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .form-row {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .form-group {
+  .method-card {
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 1.1rem;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
-  .form-label {
-    display: block;
+  .method-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(33, 75, 143, 0.22);
+    box-shadow: 0 18px 32px rgba(15, 23, 42, 0.08);
+  }
+
+  .method-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: rgba(33, 75, 143, 0.08);
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .method-icon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .method-copy {
+    min-width: 0;
+  }
+
+  .method-label {
     font-size: 0.82rem;
     font-weight: 700;
     color: var(--brand-muted);
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .form-input {
-    width: 100%;
-    padding: 0.95rem 1rem;
-    border-radius: 0.95rem;
-    border: 1px solid rgba(15, 23, 42, 0.1);
-    background: #f8fafc;
-    outline: none;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    font-family: inherit;
+  .method-value {
+    color: var(--brand-ink);
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.4;
+    word-break: break-word;
   }
 
-  .form-input:focus {
-    border-color: rgba(33, 75, 143, 0.36);
-    background: #ffffff;
-    box-shadow: 0 0 0 4px rgba(33, 75, 143, 0.12);
-  }
-
-  .form-input::placeholder {
-    color: #9ca3af;
-  }
-
-  textarea.form-input {
-    resize: vertical;
-    min-height: 100px;
-  }
-
-  select.form-input {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.5rem center;
-    background-repeat: no-repeat;
-    background-size: 1.5em 1.5em;
-    padding-right: 2.5rem;
-  }
-
-  .input-with-icon {
-    position: relative;
-  }
-
-  .input-icon {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.25rem;
-    height: 1.25rem;
-    color: #9ca3af;
-    pointer-events: none;
-  }
-
-  .submit-button {
-    width: 100%;
-    background: linear-gradient(135deg, var(--brand-red), #9e352f);
-    color: var(--brand-white);
-    padding: 1rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 18px 32px rgba(159, 57, 49, 0.22);
-  }
-
-  .submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 24px 40px rgba(159, 57, 49, 0.28);
-  }
-
-  .submit-button svg {
-    width: 1.25rem;
-    height: 1.25rem;
+  .method-description {
+    margin: 0.35rem 0 0;
+    color: var(--brand-muted);
+    line-height: 1.65;
+    font-size: 0.95rem;
   }
 
   @media (max-width: 560px) {
@@ -444,7 +380,7 @@ const quoteContactDetails = [
     }
 
     .info-column,
-    .form-column {
+    .contact-column {
       padding: 1.4rem;
     }
 
@@ -473,49 +409,29 @@ const quoteContactDetails = [
       padding: 0.9rem 0 0 0;
     }
 
-    .contact-icon {
+    .contact-icon,
+    .method-icon {
       width: 2.65rem;
       height: 2.65rem;
       border-radius: 0.85rem;
     }
 
-    .contact-icon svg {
+    .contact-icon svg,
+    .method-icon svg {
       width: 1.2rem;
       height: 1.2rem;
     }
 
-    .form-header {
+    .contact-header {
       margin-bottom: 1.2rem;
     }
 
-    .form-title {
+    .contact-title {
       font-size: 1.45rem;
     }
 
-    .quote-form {
-      gap: 1rem;
-    }
-
-    .form-row {
-      gap: 1rem;
-    }
-
-    .form-label {
-      font-size: 0.75rem;
-    }
-
-    .form-input {
-      padding: 0.9rem 0.95rem;
-      font-size: 0.95rem;
-    }
-
-    textarea.form-input {
-      min-height: 92px;
-    }
-
-    .submit-button {
-      padding: 0.95rem;
-      font-size: 0.95rem;
+    .method-card {
+      padding: 1rem;
     }
   }
 </style>
